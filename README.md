@@ -6,4 +6,4 @@ In code-server docker arguments, set an environment variable `DOCKER_MODS=linuxs
 
 If adding multiple mods, enter them in an array separated by `|`, such as `DOCKER_MODS=linuxserver/mods:code-server-ros2|linuxserver/mods:code-server-flutter`
 
-The current release [ROS2 Humble](https://docs.ros.org/en/humble/) will be made available inside the container.
+The current release [ROS2 Humble](https://docs.ros.org/en/humble/) and its development tools will be made available inside the container.
