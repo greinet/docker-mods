@@ -1,13 +1,23 @@
 #!/usr/bin/with-contenv bash
 
 # Exit if no VsCode extensions are given
-if [ -z ${VSCODE_EXTENSION_IDS+x} ]; then
-  echo "**** No VSCODE EXTENSIONS GIVEN****"
+if [ -z ${VSCODE_EXTENSION_IDS+x} ] && [ -z ${VSCODE_EXTENSION_VSIX_DIR+x} ]; then
+  echo "**** NO VSCODE EXTENSION IDS OR EXTENSION VSIX DIRECTORY GIVEN****"
   exit 0
 fi
 
-IFS='|'
-VSCODE_EXTENSION_IDS=(${VSCODE_EXTENSION_IDS})
-for ID in "${VSCODE_EXTENSION_IDS[@]}"; do
-  install-extension ${ID}
-done
+if [ ! -z ${VSCODE_EXTENSION_IDS+x} ]; then
+  IFS='|'
+  VSCODE_EXTENSION_IDS=(${VSCODE_EXTENSION_IDS})
+  for ID in "${VSCODE_EXTENSION_IDS[@]}"; do
+    install-extension ${ID}
+  done
+fi
+
+if [ ! -z ${VSCODE_EXTENSION_VSIX_DIR+x} ]; then
+  VSIX_FILES=$VSCODE_EXTENSIONS_VSIX_DIR"/*.vsix"
+  for FILE in $VSIX_FILES
+  do
+    install-extension ${FILE}
+  done
+fi
