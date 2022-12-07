@@ -1,6 +1,6 @@
-# ROS2 - Docker mod for code-server and openvscodeserver
+# ROS2 - Docker mod for code-server and openvscode-server
 
-This mod adds ROS2 to code-server/openvscode-server, to be installed/updated during container start.
+This mod adds ROS2 to code-server and openvscode-server, to be installed/updated during container start.
 
 In code-server/openvscode-server docker arguments, set an environment variable `DOCKER_MODS=linuxserver/mods:code-server-ros2`
 
